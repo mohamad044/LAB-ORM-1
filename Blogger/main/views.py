@@ -9,7 +9,7 @@ def home_view(request):
 
 def create_post_view(request:HttpRequest):
     if request.method == 'POST':
-        new_post = Post(title=request.POST['title'],content=request.POST['content'],published_at=request.POST['published_at'])
+        new_post = Post(title=request.POST['title'],content=request.POST['content'],published_at=request.POST['published_at'],photo=request.FILES['photo'])
         new_post.save()
     return render(request,'create_post.html')
 

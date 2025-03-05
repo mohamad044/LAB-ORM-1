@@ -87,6 +87,11 @@ body {
     transform: translateY(-5px);
 }
 
+.post-photo{
+    margin-bottom: 10px;
+    width: 25%;
+}
+
 .post-title {
     color: var(--text-color);
     margin-bottom: 10px;
