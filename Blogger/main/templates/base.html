@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blogger{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="{% if request.COOKIES.dark_mode == 'true' %}dark-mode{% endif %}">
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="{% url 'home_view' %}">Blogger</a>
+            </div>
+            <div class="navbar-menu">
+                <a href="{% url 'home_view' %}" class="nav-link">Home</a>
+                <a href="{% url 'create_post_view' %}" class="nav-link">New Post</a>
+                <form method="post" action="{% url 'dark_mode_view' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="theme">
+                        {% if request.COOKIES.dark_mode == 'true' %}☀️{% else %}🌙{% endif %}
+                    </button>
+                </form>            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; {% now "Y" %} Blogger. All rights reserved.</p>
+    </footer>
+</body>
+</html>
