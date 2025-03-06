@@ -11,8 +11,9 @@
     <div class="post-date">
         Published on: {{ post.published_at|date:"F d, Y H:i" }}
     </div>
-    <div class="d-flex justfy-content-end">
+    <div class="d-flex justfy-content-end gap-2">
         <a href="{%url 'post_update_view' post.id %}" class="btn btn-primary">update</a>
+        <a href="{%url 'post_delete_view' post.id %}" class="btn btn-danger">delete</a>
     </div>
 </div>
 

@@ -30,6 +30,11 @@ def post_update_view(request:HttpRequest,post_id):
     
     return render(request, 'post_update.html',{'post':post})
 
+def post_delete_view(request:HttpRequest,post_id):
+    post = Post.objects.get(pk=post_id)
+    post.delete()
+    return redirect('home_view')
+
 def dark_mode_view(request:HttpRequest):
     referer = request.META.get('HTTP_REFERER', '/')
     response = redirect(referer)
