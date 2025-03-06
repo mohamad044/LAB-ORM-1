@@ -13,6 +13,15 @@ def create_post_view(request:HttpRequest):
         new_post.save()
     return render(request,'create_post.html')
 
+def post_detail_view(request,post_id):
+    
+    post = Post.objects.get(pk=post_id)
+    return render(request, 'post_detail.html',{'post':post})
+
+def post_update_view(request,post_id):
+    post = Post.objects.get(pk=post_id)
+    return render(request, 'post_update.html',{'post':post})
+
 def dark_mode_view(request:HttpRequest):
     referer = request.META.get('HTTP_REFERER', '/')
     response = redirect(referer)

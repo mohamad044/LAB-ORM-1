@@ -83,6 +83,17 @@ body {
     transition: transform 0.3s ease;
 }
 
+.post-detail{
+    width: 100%;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+
 .post-card:hover {
     transform: translateY(-5px);
 }
