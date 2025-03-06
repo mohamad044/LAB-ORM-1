@@ -18,8 +18,16 @@ def post_detail_view(request,post_id):
     post = Post.objects.get(pk=post_id)
     return render(request, 'post_detail.html',{'post':post})
 
-def post_update_view(request,post_id):
+def post_update_view(request:HttpRequest,post_id):
     post = Post.objects.get(pk=post_id)
+    if request.method == 'POST':
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.published_at = request.POST['published_at']
+        if 'photo' in request.FILES: post.photo = request.FILES['photo']
+        post.save()
+        return redirect('post_detail_view',post_id=post_id)
+    
     return render(request, 'post_update.html',{'post':post})
 
 def dark_mode_view(request:HttpRequest):

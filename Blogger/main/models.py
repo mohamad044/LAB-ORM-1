@@ -11,4 +11,4 @@ class Post(models.Model):
     content =models.TextField()
     is_published = models.BooleanField(default=True)
     published_at = models.DateTimeField(default=datetime.datetime.now())
-    photo = models.ImageField(default='images/default.jpg')
+    photo = models.ImageField(default='images/default.jpg',upload_to='images/')

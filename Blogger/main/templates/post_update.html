@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Blogger - Update Post {{post.id}}{% endblock %}
+{% block title %}Blogger - Update Post {{post.id}} - {{post.title}}{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-6">
         <h1>Update Post {{post.id}}</h1>
-        <form class="d-flex flex-column gap-2" action="{% url 'create_post_view' %}" method="post" enctype="multipart/form-data">
+        <form class="d-flex flex-column gap-2" action="{% url 'post_update_view' post.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" placeholder="Title" name="title" class="form-control" />
-            <textarea placeholder="your blog" name="content" class="form-control"></textarea>
-            <input type="date" name="published_at" class="form-control"/>
+            <input type="text" placeholder="Title" name="title" value="{{post.title}}" class="form-control" />
+            <textarea placeholder="your blog" name="content" class="form-control">{{post.content}}</textarea>
+            <input type="date" name="published_at" class="form-control" value="{{post.published_at|date:'Y-m-d' }}" />
+            <div class="row">
+                <div class="col-3">
+                    <img src="{{post.photo.url}}" class="w-100">
+                </div>
+            </div>
             <input type="file" name="photo" class="form-control">
-            <input type="submit" value="Create new Post" class="btn btn-primary" />
+            <input type="submit" value="edit post" class="btn btn-primary" />
         </form>
     </div>
 </div>
