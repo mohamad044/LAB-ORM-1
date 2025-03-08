@@ -9,10 +9,10 @@
 
         <form class="d-flex flex-column gap-2" action="{% url 'create_post_view' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" placeholder="Title" name="title" class="form-control" />
-            <textarea placeholder="your blog" name="content" class="form-control"></textarea>
+            <input type="text" placeholder="Title" name="title" class="form-control" required minlength="3"/>
+            <textarea placeholder="your blog" name="content" class="form-control" required></textarea>
             <input type="date" name="published_at" class="form-control"/>
-            <input type="file" name="photo" class="form-control">
+            <input type="file" name="photo" class="form-control" accept=".jpeg, .jpg, .png">
             <input type="submit" value="Create new Post" class="btn btn-primary" />
         </form>
     </div>

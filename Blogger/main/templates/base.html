@@ -22,6 +22,9 @@
             <div class="navbar-menu">
                 <a href="{% url 'home_view' %}" class="nav-link">Home</a>
                 <a href="{% url 'create_post_view' %}" class="nav-link">New Post</a>
+                <form role="search" method="get" action="{% url 'search_post_view' %}">
+                    <input type="search"  name="search" class="search-control" placeholder="search" aria-label="search">
+                </form>
                 <form method="post" action="{% url 'dark_mode_view' %}">
                     {% csrf_token %}
                     <button type="submit" class="theme">

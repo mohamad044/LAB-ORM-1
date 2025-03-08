@@ -11,12 +11,13 @@
             <input type="text" placeholder="Title" name="title" value="{{post.title}}" class="form-control" />
             <textarea placeholder="your blog" name="content" class="form-control">{{post.content}}</textarea>
             <input type="date" name="published_at" class="form-control" value="{{post.published_at|date:'Y-m-d' }}" />
-            <div class="row">
-                <div class="col-3">
+            <div class="col-10">
+                <div>
                     <img src="{{post.photo.url}}" class="w-100">
                 </div>
+                <input type="file" name="photo" class="form-control">
             </div>
-            <input type="file" name="photo" class="form-control">
+
             <input type="submit" value="edit post" class="btn btn-primary" />
         </form>
     </div>
