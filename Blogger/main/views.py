@@ -56,4 +56,4 @@ def search_post_view(request:HttpRequest):
                                     )
         posts.order_by('-id')
         
-    return render(request,'search_post.html',{'posts':posts})
+    return render(request,'search_post.html',{'posts':posts,'search_query':search_query})
