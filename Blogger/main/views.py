@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest
-from .models import Post
+from .models import Post,Comment
 from django.db.models import Q
 
 # Create your views here.
@@ -18,8 +18,19 @@ def create_post_view(request:HttpRequest):
 
 def post_detail_view(request,post_id):
     post = Post.objects.get(pk=post_id)
-    return render(request, 'post_detail.html',{'post':post})
+    comments = Comment.objects.filter(post=post)
+    return render(request, 'post_detail.html',{'post':post,'comments':comments})
 
+def add_comment_view(request:HttpRequest,post_id):
+    if request.method == 'POST':
+        post = Post.objects.get(pk=post_id)
+        new_comment = Comment(post=post, name=request.POST['name'],comment=request.POST['comment'])
+        new_comment.save()
+    return redirect('post_detail_view',post_id)
+    
+    
+    
+    
 def post_update_view(request:HttpRequest,post_id):
     post = Post.objects.get(pk=post_id)
     if request.method == 'POST':
